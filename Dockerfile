@@ -1,4 +1,4 @@
-FROM ruby:3.3.0
+FROM ruby:3.3.1
 
 # 環境変数の設定
 ENV LANG C.UTF-8
@@ -35,7 +35,6 @@ RUN /usr/local/bundle/bin/rails --version
 
 # Railsがインストールされている場所をパスに追加
 ENV PATH="/usr/local/bundle/bin:${PATH}"
-
 
 # Bunのインストール
 RUN curl -fsSL https://bun.sh/install | bash
