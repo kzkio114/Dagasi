@@ -2,8 +2,8 @@
   "name": "app",
   "private": true,
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build": "bun build src/index.js --out-dir=public/javascripts --source-maps",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./public/stylesheets/application.css --no-source-map --load-path=node_modules"
   },
   "dependencies": {
     "react": "^18.3.1",

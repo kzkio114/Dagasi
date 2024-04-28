@@ -1,9 +1,17 @@
-import "@hotwired/turbo-rails"
-import "./controllers"
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App'; // 仮のReactコンポーネントのパス
+import App from '../../src/components/App';
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.body.appendChild(document.createElement('div')));
+document.addEventListener('turbo:load', () => {
+  const reactMount = document.getElementById('react-root');
+  if (reactMount) {
+    ReactDOM.render(<App />, reactMount);
+  }
+});
+
+document.addEventListener('turbo:before-cache', () => {
+  const reactMount = document.getElementById('react-root');
+  if (reactMount) {
+    ReactDOM.unmountComponentAtNode(reactMount);
+  }
 });

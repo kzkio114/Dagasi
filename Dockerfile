@@ -13,6 +13,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
     && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
 
+# Yarnのインストール
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get update && apt-get install -y yarn
+
 # Node.jsのインストール
 RUN apt-get update && apt-get install -y nodejs
 
@@ -45,8 +50,16 @@ ENV PATH /root/.bun/bin:$PATH
 
 RUN bun add bulma
 
+# アプリケーションの依存関係のインストール
+COPY package.json ./
+RUN yarn install
+
 # アプリケーションのコピー
-COPY . /myapp
+COPY . /app
+
+# アプリケーションのビルド
+RUN bun build src/index.js --out-dir=public/javascripts --source-maps
+
 
 # ポート3000を公開
 EXPOSE 3000
