@@ -60,7 +60,6 @@ COPY . /app
 # アプリケーションのビルド
 RUN bun build src/index.js --out-dir=public/javascripts --source-maps
 
-
 # ポート3000を公開
 EXPOSE 3000
 
