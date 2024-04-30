@@ -43,6 +43,11 @@ RUN /root/.bun/bin/bun --version
 # Bunがインストールされている場所をパスに追加
 ENV PATH /root/.bun/bin:$PATH
 
+# JavaScriptの依存関係の追加
+COPY package.json ./
+RUN bun install
+RUN bun add esbuild
+RUN bun add @hotwired/turbo-rails @hotwired/stimulus
 RUN bun add bulma
 
 # アプリケーションのコピー
