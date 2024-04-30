@@ -2,10 +2,15 @@
   "name": "app",
   "private": true,
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build:react": "bun build src/index.js --out-dir=app/assets/builds --out-file=bundle.js",
+    "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "start": "bun run src/index.js"
   },
   "dependencies": {
+    "bulma": "^1.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sass": "^1.75.0"
   }
 }

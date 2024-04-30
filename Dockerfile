@@ -17,8 +17,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 RUN apt-get update && apt-get install -y nodejs
 
 # アプリケーションディレクトリの作成
-RUN mkdir /app
 WORKDIR /app
+
+# Bunのインストール
+RUN curl -fsSL https://bun.sh/install | bash
+ENV PATH="/root/.bun/bin:${PATH}"
 
 # Gemの依存関係の解決
 COPY Gemfile* /app/
@@ -29,24 +32,21 @@ RUN gem install bundler && bundle install
 RUN gem install rails
 RUN which rails
 RUN echo $PATH
-
-# Railsのバージョンを確認
 RUN /usr/local/bundle/bin/rails --version
-
-# Railsがインストールされている場所をパスに追加
 ENV PATH="/usr/local/bundle/bin:${PATH}"
 
-# Bunのインストール
-RUN curl -fsSL https://bun.sh/install | bash
-RUN /root/.bun/bin/bun --version
+# アプリケーションのファイルをコピー
+COPY . /app
 
-# Bunがインストールされている場所をパスに追加
-ENV PATH /root/.bun/bin:$PATH
+# package.json と bun.lockb をコピー
+COPY package.json bun.lockb /app/
 
+# 依存関係のインストール
+RUN bun install
+
+# ReactとBulmaのインストール
+RUN bun add react react-dom
 RUN bun add bulma
-
-# アプリケーションのコピー
-COPY . /myapp
 
 # ポート3000を公開
 EXPOSE 3000
