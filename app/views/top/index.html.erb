@@ -2,8 +2,12 @@
   <div class="columns">
     <div class="column is-half">
       <div class="notification is-primary">
-        <p>Hello, this is a sample view with Bulma!</p>
-        <%= link_to 'Click me', '#', class: 'button is-light' %>
+        <p>ボタン押せますか？？</p>
+        <%= button_to 'ボタン押してね', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'button is-light' %>
       </div>
     </div>
   </div>
+  <%= turbo_frame_tag "buttons" do %>
+    <!-- ここに新しいボタンが追加される -->
+  <% end %>
+</div>
