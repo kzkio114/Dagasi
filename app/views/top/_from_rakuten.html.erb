@@ -1,0 +1,6 @@
+<%= form_with url: root_path, method: :get, local: true do |form| %>
+  <%= form.label :keyword, "キーワードで検索" %>
+  <%= form.text_field :keyword %>
+  <%= form.submit "検索" %>
+<% end %>
+

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post 'add_button', to: 'top#add_button'
   delete 'remove_buttons', to: 'top#remove_buttons'
   delete 'remove_specific_button/:id', to: 'top#remove_specific_button', as: 'remove_specific_button'
+  get 'search_items', to: 'top#search_items'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

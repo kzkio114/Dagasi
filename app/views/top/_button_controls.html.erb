@@ -1,0 +1,9 @@
+<div class="notification is-primary">
+  <p>ボタン押せますか？？</p>
+  <%= button_to 'ボタン押してね', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'button is-light' %>
+  <%= button_to "全て削除", remove_buttons_path, method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
+</div>
+<%= turbo_frame_tag "buttons" do %>
+  <!-- ここに新しいボタンが追加される -->
+  <!-- 削除後もこのフレームは残る -->
+<% end %>

@@ -2,6 +2,8 @@ class TopController < ApplicationController
 
   def index
     @buttons = Button.all
+    @items = RakutenService.search_items(params[:keyword]) if params[:keyword].present?
+    Rails.logger.debug("API Response: #{@items}")# ログに出力
   end
 
   def add_button
@@ -11,7 +13,10 @@ class TopController < ApplicationController
         format.turbo_stream do
           render turbo_stream: turbo_stream.append("buttons", partial: "top/button", locals: { button: @button })
         end
+        format.html { redirect_to root_path }
       end
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 

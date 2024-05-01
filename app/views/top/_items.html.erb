@@ -1,0 +1,10 @@
+<% if @items.present? %>
+  <% @items.each do |item| %>
+    <div class="item">
+      <p><%= item[:name] %></p>
+      <img src="<%= item[:image_url] || image_path('default-image.png') %>" alt="<%= item[:name] %>">
+    </div>
+  <% end %>
+<% else %>
+  <p>検索結果が見つかりません。別のキーワードで検索してください。</p>
+<% end %>
