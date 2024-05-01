@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root 'top#index'
+  post 'add_button', to: 'top#add_button'
+  delete 'remove_buttons', to: 'top#remove_buttons'
+  delete 'remove_specific_button/:id', to: 'top#remove_specific_button', as: 'remove_specific_button'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

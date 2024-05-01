@@ -1,4 +1,4 @@
-FROM ruby:3.3.0
+FROM ruby:3.3.1
 
 # 環境変数の設定
 ENV LANG C.UTF-8
@@ -36,7 +36,6 @@ RUN /usr/local/bundle/bin/rails --version
 # Railsがインストールされている場所をパスに追加
 ENV PATH="/usr/local/bundle/bin:${PATH}"
 
-
 # Bunのインストール
 RUN curl -fsSL https://bun.sh/install | bash
 RUN /root/.bun/bin/bun --version
@@ -44,6 +43,11 @@ RUN /root/.bun/bin/bun --version
 # Bunがインストールされている場所をパスに追加
 ENV PATH /root/.bun/bin:$PATH
 
+# JavaScriptの依存関係の追加
+COPY package.json ./
+RUN bun install
+RUN bun add esbuild
+RUN bun add @hotwired/turbo-rails @hotwired/stimulus
 RUN bun add bulma
 
 # アプリケーションのコピー
