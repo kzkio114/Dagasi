@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   delete 'remove_buttons', to: 'top#remove_buttons'
   delete 'remove_specific_button/:id', to: 'top#remove_specific_button', as: 'remove_specific_button'
   get 'search_items', to: 'top#search_items'
-
+  post '/add_to_cart/:id', to: 'carts#add_to_cart', as: 'add_to_cart'
   resources :top, only: [:index]
 
   # ランダム検索ページへのルート

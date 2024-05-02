@@ -6,7 +6,7 @@ class TopController < ApplicationController
       if Item.exists?(keyword: @keyword)
         @items = RakutenService.search_items(@keyword)
       else
-        flash[:alert] = "駄菓子のみ可能です。"
+        flash[:alert] = "駄菓子のみです。"
         redirect_to root_path and return  # 有効なキーワードがない場合はリダイレクト
       end
     end

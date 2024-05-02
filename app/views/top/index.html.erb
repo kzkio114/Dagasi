@@ -9,8 +9,11 @@
             <% if @keyword.present? %>
             <% end %>
           </div>
-          <div class="column is-half">
+           <div class="column is-half">
             <%= render 'top/from_rakuten' %> <!-- 検索フォーム -->
+          </div>
+          <div class="column is-full">
+          <%= render 'search_keyword' %> <!-- 検索キーワード表示 -->
           </div>
           <div class="column is-full">
             <%= render 'top/items', items: @items %> <!-- 商品一覧を表示 -->

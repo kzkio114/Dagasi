@@ -1,0 +1,7 @@
+<% if session[:cart].present? %>
+  <% session[:cart].each do |keyword| %>
+    <p><%= keyword %></p>
+  <% end %>
+<% else %>
+  <p>カートは空です。</p>
+<% end %>
