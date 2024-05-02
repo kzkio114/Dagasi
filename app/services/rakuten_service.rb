@@ -12,7 +12,7 @@ class RakutenService
         {
           name: item.name,  # 商品名
           price: item.price,  # 価格
-          url: item.affiliate_url,  # 商品のアフィリエイトURL
+          url: item['itemUrl'], # 商品URL
           image_url: image_url  # 商品画像URL
         }
     end

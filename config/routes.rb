@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   delete 'remove_specific_button/:id', to: 'top#remove_specific_button', as: 'remove_specific_button'
   get 'search_items', to: 'top#search_items'
 
+  resources :top, only: [:index]
+
+  # ランダム検索ページへのルート
+  get 'items/random_search', to: 'items#random_search'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

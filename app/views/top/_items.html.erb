@@ -1,10 +1,15 @@
+<% if @keyword.present? %>
+  <h2>検索キーワード: <%= @keyword %></h2>
+<% end %>
 <% if @items.present? %>
   <% @items.each do |item| %>
     <div class="item">
       <p><%= item[:name] %></p>
-      <img src="<%= item[:image_url] || image_path('default-image.png') %>" alt="<%= item[:name] %>">
+      <p>価格: ¥<%= number_with_delimiter(item[:price]) %></p> <!-- 価格を表示 -->
+      <a href="<%= item[:url] %>" target="_blank">商品詳細</a> <!-- 商品詳細へのリンク -->
+      <img src="<%= item[:image_url] %>" alt="<%= item[:name] %>" style="width:100px;height:auto;">
     </div>
   <% end %>
 <% else %>
-  <p>検索結果が見つかりません。別のキーワードで検索してください。</p>
+  <p>検索結果が見つかりませんでした。</p>
 <% end %>

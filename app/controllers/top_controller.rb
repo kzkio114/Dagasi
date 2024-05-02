@@ -1,10 +1,18 @@
 class TopController < ApplicationController
 
   def index
-    @buttons = Button.all
-    @items = RakutenService.search_items(params[:keyword]) if params[:keyword].present?
-    Rails.logger.debug("API Response: #{@items}")# ログに出力
+    @keyword = params[:keyword]
+    if @keyword.present?
+      if Item.exists?(keyword: @keyword)
+        @items = RakutenService.search_items(@keyword)
+      else
+        flash[:alert] = "無効なキーワードです。"
+        redirect_to root_path and return  # 有効なキーワードがない場合はリダイレクト
+      end
+    end
+    @buttons = Button.all  # キーワードがない場合、またはリダイレクトせずにこの行に到達した場合
   end
+end
 
   def add_button
     @button = Button.new
