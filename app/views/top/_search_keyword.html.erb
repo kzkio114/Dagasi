@@ -1,8 +1,4 @@
-<turbo-stream action="replace" target="keyword">
-  <template>
-    <h2 style="text-transform: uppercase !important; font-weight: bold;">検索キーワード: <%= @keyword %></h2>
-  </template>
-</turbo-stream>
+<h2 style="text-transform: uppercase !important; font-weight: bold;">検索キーワード: <%= @keyword %></h2>
 <% if @keyword.present? %>
   <%= button_to 'カートに入れる', add_to_cart_path(@keyword), data: { turbo_action: 'replace' }, class: 'button' %> <!-- カートに入れるボタン -->
 <% end %>
