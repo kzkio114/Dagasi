@@ -3,12 +3,14 @@ class TopController < ApplicationController
   def index
     @keyword = params[:keyword]
     if @keyword.present?
-      @items = RakutenService.search_items(@keyword).map do |item|
-        total_price = PriceCalculator.calculate(item[:name])
-        item.merge(total_price: total_price)
+      if Item.exists?(keyword: @keyword)
+        @items = RakutenService.search_items(@keyword)
+      else
+        flash[:alert] = "駄菓子のみ可能です。"
+        redirect_to root_path and return  # 有効なキーワードがない場合はリダイレクト
       end
     end
-    @buttons = Button.all
+    @buttons = Button.all  # キーワードがない場合、またはリダイレクトせずにこの行に到達した場合
   end
 
 

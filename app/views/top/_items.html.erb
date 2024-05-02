@@ -1,16 +1,16 @@
-<% if @keyword.present? %>
-  <h2>検索キーワード: <%= @keyword %></h2>
-<% end %>
+<div class="column is-half box" style="margin-bottom: 25px;">
+    <h2 style="text-transform: uppercase;">検索キーワード: <%= @keyword %></h2>
+</div>
 <% if @items.present? %>
-  <% @items.each do |item| %>
-    <div class="item">
-      <p><%= item[:name] %></p>
-      <p>通常価格: ¥<%= number_with_delimiter(item[:price]) %></p>
-      <p>総価格: ¥<%= number_with_delimiter(item[:total_price]) %></p>
-      <a href="<%= item[:url] %>" target="_blank">商品詳細</a>
-      <img src="<%= item[:image_url] %>" alt="<%= item[:name] %>" style="width:100px;height:auto;">
-    </div>
-  <% end %>
+  <div class="columns is-multiline">
+    <% @items.each do |item| %>
+      <div class="column is-one-fifth box item">
+        <p>¥<%= number_with_delimiter(item[:price]) %></p>
+        <a href="<%= item[:url] %>" target="_blank">楽天市場へGO!!</a>
+        <img src="<%= item[:image_url] %>" alt="<%= item[:name] %>" style="width:100px;height:auto;">
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <p>検索結果が見つかりませんでした。</p>
 <% end %>
