@@ -1,0 +1,13 @@
+<% if @items.present? %>
+  <div class="columns is-multiline">
+    <% @items.each do |item| %>
+      <div class="column is-one-fifth box item">
+        <p>¥<%= number_with_delimiter(item[:price]) %></p>
+        <a href="<%= item[:url] %>" target="_blank">楽天市場へGO!!</a>
+        <img src="<%= item[:image_url] %>" alt="<%= item[:name] %>" style="width:100px;height:auto;">
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>検索結果が見つかりませんでした。</p>
+<% end %>

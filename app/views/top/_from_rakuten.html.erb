@@ -1,0 +1,13 @@
+<%= form_with url: root_path, method: :get, local: true do |form| %>
+  <div class="field">
+    <%= form.label :keyword, "キーワードで検索", class: "label" %>
+    <div class="control">
+      <%= form.text_field :keyword, class: "input", placeholder: "キーワードを入力" %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <%= form.submit "検索", class: "button is-link" %>
+    </div>
+  </div>
+<% end %>

@@ -1,15 +1,24 @@
 <div class="container">
   <div class="columns">
-    <div class="column is-half">
+    <div class="column is-full">
       <div class="notification is-primary">
-        <p>ボタン押せますか？？</p>
-        <%= button_to 'ボタン押してね', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'button is-light' %>
-        <%= button_to "全て削除", remove_buttons_path, method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
+        <div class="columns is-multiline">
+          <div class="column is-full">
+            <%= link_to 'ランダム検索', items_random_search_path, class: 'button' %> <!-- ランダム検索ボタン -->
+            <%= render 'top/button_controls' %> <!-- ボタン操作 -->
+            <% if @keyword.present? %>
+            <% end %>
+          </div>
+           <div class="column is-half">
+            <%= render 'top/from_rakuten' %> <!-- 検索フォーム -->
+          </div>
+          <div class="column is-full">
+          <%= render 'search_keyword' %> <!-- 検索キーワード表示 -->
+          </div>
+          <div class="column is-full">
+            <%= render 'top/items', items: @items %> <!-- 商品一覧を表示 -->
+        </div>
       </div>
     </div>
   </div>
-  <%= turbo_frame_tag "buttons" do %>
-    <!-- ここに新しいボタンが追加される -->
-    <!-- 削除後もこのフレームは残る -->
-  <% end %>
 </div>

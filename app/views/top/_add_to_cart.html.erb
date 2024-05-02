@@ -1,6 +1,5 @@
-<div id="<%= dom_id(button) %>" class="notification">
+<div id="<%= dom_id(@item) %>" class="notification">
   <%= button_to '新しいボタン', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'button is-info' %>
-  <div id="element_id"></div>
-  <%= button_to "削除", remove_specific_button_path(id: dom_id(button)),
+  <%= button_to "削除", remove_specific_button_path(id: dom_id(@item)),
   method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
 </div>
