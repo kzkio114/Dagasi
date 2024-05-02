@@ -1,4 +1,3 @@
-<!-- app/views/top/_button.html.erb -->
 <div id="<%= dom_id(button) %>" class="notification">
   <%= button_to '新しいボタン', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'button is-info' %>
   <%= button_to "削除", remove_specific_button_path(id: dom_id(button)),

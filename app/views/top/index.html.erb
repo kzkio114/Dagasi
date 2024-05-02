@@ -2,10 +2,10 @@
   <div class="columns">
     <div class="column is-half">
       <div class="notification is-primary">
-      <%= render 'top/items', items: @items %>
-      <%= render 'top/from_rakuten' %>
-      <%= render 'top/button_controls' %>
-      <%= link_to 'ランダム検索', items_random_search_path, class: 'button' %>
+      <%= link_to 'ランダム検索', items_random_search_path, class: 'button' %> <!-- ランダム検索ボタン -->
+      <%= render 'top/from_rakuten' %> <!-- 検索フォーム -->
+      <%= render 'top/items', items: @items %> <!-- 商品一覧を表示 -->
+      <%= render 'top/button_controls' %> <!-- ボタン操作 -->
       </div>
     </div>
   </div>

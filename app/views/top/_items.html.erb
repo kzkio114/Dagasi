@@ -5,8 +5,9 @@
   <% @items.each do |item| %>
     <div class="item">
       <p><%= item[:name] %></p>
-      <p>価格: ¥<%= number_with_delimiter(item[:price]) %></p> <!-- 価格を表示 -->
-      <a href="<%= item[:url] %>" target="_blank">商品詳細</a> <!-- 商品詳細へのリンク -->
+      <p>通常価格: ¥<%= number_with_delimiter(item[:price]) %></p>
+      <p>総価格: ¥<%= number_with_delimiter(item[:total_price]) %></p>
+      <a href="<%= item[:url] %>" target="_blank">商品詳細</a>
       <img src="<%= item[:image_url] %>" alt="<%= item[:name] %>" style="width:100px;height:auto;">
     </div>
   <% end %>
