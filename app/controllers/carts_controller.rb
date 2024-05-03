@@ -19,8 +19,9 @@ class CartsController < ApplicationController
 
   respond_to do |format|
     format.turbo_stream do
-      render turbo_stream: turbo_stream.replace("element_id", partial: "carts/cart_item", locals: { keyword: @keyword })
+      render turbo_stream: turbo_stream.replace("cart", partial: "carts/cart_item", locals: { item: @item })
     end
+    format.html { redirect_to root_path }
   end
-end
+ end
 end

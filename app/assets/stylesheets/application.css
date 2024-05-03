@@ -1,0 +1,7 @@
+.no-gap .column .button {
+    margin-right: 0;
+  }
+
+.tight-button {
+    padding: 0.5rem 0.75rem;
+  }

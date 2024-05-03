@@ -1,0 +1,7 @@
+<!-- app/views/items/random_search.html.erb -->
+<% @items.each do |item| %>
+  <!-- アイテムの表示方法はアイテムの属性によります -->
+  <p><%= item.name %></p>
+  <p><%= item.price %></p>
+  <!-- 他の属性も表示 -->
+<% end %>

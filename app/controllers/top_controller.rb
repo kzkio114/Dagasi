@@ -3,18 +3,31 @@ class TopController < ApplicationController
   def index
     @keyword = params[:keyword]
     if @keyword.present?
-        @items = RakutenService.search_items(@keyword)
-      else
-        flash[:alert] = "こどもごころがあるもので。"
-        #redirect_to root_path and return  # 有効なキーワードがない場合はリダイレクト
-      end
-    @buttons = Button.all  # キーワードがない場合、またはリダイレクトせずにこの行に到達した場合
+      @keyword += "　子ども" # 検索キーワードに "全てに 子ども" を追加
+      @items = RakutenService.search_items(@keyword)
+    end
+    @random_items = random_items
+    @buttons = Button.all
+  end
+
+  def random_items
+    ids = Item.pluck(:id)
+    random_ids = ids.sample(5)
+    Item.find(random_ids)
+  end
+
+  def refresh_items
+    @items = random_items
+    respond_to do |format|
+      format.js
+    end
   end
 
 
   def add_button
     @button = Button.new
     if @button.save
+      @item_names = Item.pluck(:name).map { |name| name.gsub("子ども", "") if name } # アイテム名を取得し、"子ども"を削除
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.append("buttons", partial: "top/button", locals: { button: @button })

@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get 'search_items', to: 'top#search_items'
   post '/add_to_cart/:id', to: 'carts#add_to_cart', as: 'add_to_cart'
   resources :top, only: [:index]
-
+  get 'refresh_items', to: 'top#refresh_items', as: 'refresh_items'
+ 
   # ランダム検索ページへのルート
   get 'items/random_search', to: 'items#random_search'
 
