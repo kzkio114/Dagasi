@@ -1,8 +1,9 @@
 class TopController < ApplicationController
 
   def index
-    @keyword = params[:keyword]
-    if @keyword.present?
+    @search_form = SearchForm.new(keyword: params[:keyword])
+    if @search_form.valid?
+      @keyword = @search_form.keyword
       @keyword += "　子ども" # 検索キーワードに "全てに 子ども" を追加
       @items = RakutenService.search_items(@keyword)
     end

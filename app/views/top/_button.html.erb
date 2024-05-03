@@ -1,5 +1,5 @@
 <div id="<%= dom_id(button) %>" class="notification">
-  <%= button_to "１つ閉じる", remove_specific_button_path(id: dom_id(button)),method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
+  <%= button_to "閉じる", remove_specific_button_path(id: dom_id(button)),method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
   <% if @item_names.present? %>
   <p>アイテム　登録数: <%= Item.count %></p>
   <div class="columns is-multiline">
@@ -12,6 +12,6 @@
     <% end %>
   </div>
 <% end %>
-  <%= button_to "１つ閉じる", remove_specific_button_path(id: dom_id(button)),
+  <%= button_to "閉じる", remove_specific_button_path(id: dom_id(button)),
   method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
 </div>

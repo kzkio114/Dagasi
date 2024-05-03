@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   put 'replace_element/:id', to: 'top#replace_element', as: 'replace_element'
   # ランダム検索ページへのルート
   get 'items/random_search', to: 'items#random_search'
-
+  resources :items
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
