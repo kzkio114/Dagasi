@@ -12,9 +12,9 @@ class CartsController < ApplicationController
   # 新しいItemを作成して保存
   @item = Item.new(name: @keyword)
   if @item.save
-    flash[:notice] = 'アイテムを保存しました。'
+    #flash[:notice] = 'アイテムを保存しました。'
   else
-    flash[:alert] = 'アイテムの保存に失敗しました。'
+    #flash[:alert] = 'アイテムの保存に失敗しました。'
   end
 
   respond_to do |format|

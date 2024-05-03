@@ -58,9 +58,9 @@ class TopController < ApplicationController
     end
   end
 
-#   # 特定の要素だけを新しい内容で更新の為replaceを使う
-#   # 特定のボタンのみを削除し、新しい内容で置き換える
-#   def replace_element
+#    # 特定の要素だけを新しい内容で更新の為replaceを使う
+#    # 特定のボタンのみを削除し、新しい内容で置き換える
+#    def replace_element
 #     @element_id = params[:id]
 #     respond_to do |format|
 #       format.turbo_stream do
