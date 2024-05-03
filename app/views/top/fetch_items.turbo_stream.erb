@@ -1,0 +1,6 @@
+<!-- app/views/top/fetch_items.turbo_stream.erb -->
+<turbo-stream action="replace" target="element_id">
+  <template>
+    <%= render partial: 'items', locals: { items: @items } %>
+  </template>
+</turbo-stream>

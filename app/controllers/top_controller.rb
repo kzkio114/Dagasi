@@ -6,7 +6,7 @@ class TopController < ApplicationController
         @items = RakutenService.search_items(@keyword)
       else
         flash[:alert] = "こどもごころがあるもので。"
-        redirect_to root_path and return  # 有効なキーワードがない場合はリダイレクト
+        #redirect_to root_path and return  # 有効なキーワードがない場合はリダイレクト
       end
     @buttons = Button.all  # キーワードがない場合、またはリダイレクトせずにこの行に到達した場合
   end

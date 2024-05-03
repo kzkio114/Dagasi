@@ -9,22 +9,4 @@ class ItemsController < ApplicationController
       redirect_to root_path   # エラーメッセージと共に別のページにリダイレクト
     end
   end
-
-    def create
-      @item = Item.new(item_params)
-      if @item.save
-        flash[:notice] = 'アイテムを保存しました。'
-        redirect_to items_path
-      else
-        flash[:alert] = 'アイテムの保存に失敗しました。'
-        render :new
-      end
-    end
-
-    private
-
-    def item_params
-      params.require(:item).permit(:name, :category)
-    end
-  end
 end

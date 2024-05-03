@@ -7,12 +7,20 @@ class CartsController < ApplicationController
     end
 
     def add_to_cart
-    @keyword = params[:id]  # ここでキーワードを取得
+  @keyword = params[:id]  # ここでキーワードを取得
 
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace("element_id", partial: "carts/cart_item", locals: { keyword: @keyword })
-      end
+  # 新しいItemを作成して保存
+  @item = Item.new(name: @keyword)
+  if @item.save
+    flash[:notice] = 'アイテムを保存しました。'
+  else
+    flash[:alert] = 'アイテムの保存に失敗しました。'
+  end
+
+  respond_to do |format|
+    format.turbo_stream do
+      render turbo_stream: turbo_stream.replace("element_id", partial: "carts/cart_item", locals: { keyword: @keyword })
     end
   end
+end
 end
