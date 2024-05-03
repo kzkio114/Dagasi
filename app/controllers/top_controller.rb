@@ -3,13 +3,11 @@ class TopController < ApplicationController
   def index
     @keyword = params[:keyword]
     if @keyword.present?
-      if Item.exists?(keyword: @keyword)
         @items = RakutenService.search_items(@keyword)
       else
-        flash[:alert] = "駄菓子のみです。"
+        flash[:alert] = "こどもごころがあるもので。"
         redirect_to root_path and return  # 有効なキーワードがない場合はリダイレクト
       end
-    end
     @buttons = Button.all  # キーワードがない場合、またはリダイレクトせずにこの行に到達した場合
   end
 
