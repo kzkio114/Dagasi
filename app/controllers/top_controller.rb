@@ -4,12 +4,21 @@ class TopController < ApplicationController
     @search_form = SearchForm.new(keyword: params[:keyword])
     if @search_form.valid?
       @keyword = @search_form.keyword
-      @keyword += "　子ども" # 検索キーワードに "全てに 子ども" を追加
+      @keyword += "　子ども"
       @items = RakutenService.search_items(@keyword)
     end
     @random_items = random_items
     @buttons = Button.all
+    @last_item = Item.last # またはどのようにして最後のアイテムを取得するかに基づきます
+    @item_count = Item.count
+    
+    # Twitterの共有リンク用のテキストを作成
+    app_url = "nostalgic-e3f4cba5b01a.herokuapp.com"
+    app_name = "懐かしいものを思い出すアプリ"
+    last_item_name = @last_item.name.gsub("子ども", "") if @last_item.present? # 最後のアイテム名からも「子ども」を削除
+    @tweet_text = "#{app_name}\n最後に登録した懐かしいもの: #{last_item_name}\n懐かしいもの登録数: #{@item_count}\n#{app_url}\n#懐思いアプリ #ミニアプリweek"
   end
+
 
   def show
     # 必要な処理をここに記述
