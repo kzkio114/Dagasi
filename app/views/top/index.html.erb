@@ -2,21 +2,29 @@
   <div class="columns">
     <div class="column is-full">
       <div class="notification is-primary">
+      <%= turbo_frame_tag "info_area", class: "mb-3" do %>
+　　　 　<% end %> <!-- 情報エリア -->
         <div class="columns is-multiline">
-          <div class="column is-full">
-            <%= link_to 'ランダム検索', items_random_search_path, class: 'button' %> <!-- ランダム検索ボタン -->
-            <%= render 'top/button_controls' %> <!-- ボタン操作 -->
+          <div class="column is-full mt-3">
+            <%= link_to 'ランダム表示', items_random_search_path, class: 'button' %>
+            <!-- ランダム検索ボタン -->
+            <%= render 'top/button_controls' %> <!-- ボタンコントロール -->
             <% if @keyword.present? %>
             <% end %>
           </div>
-           <div class="column is-half">
+          <div class="column is-half">
             <%= render 'top/from_rakuten' %> <!-- 検索フォーム -->
           </div>
           <div class="column is-full">
-          <%= render 'search_keyword' %> <!-- 検索キーワード表示 -->
+            <%= render 'search_keyword' %> <!-- 検索キーワード表示 -->
           </div>
           <div class="column is-full">
-            <%= render 'top/items', items: @items %> <!-- 商品一覧を表示 -->
+            <% if @items.present? %>
+              <%= render 'top/items', items: @items %> <!-- 商品一覧を表示 -->
+            <% elsif @random_items.present? %>
+              <%= render 'top/items', items: @random_items %> <!-- ランダム検索結果を表示 -->
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

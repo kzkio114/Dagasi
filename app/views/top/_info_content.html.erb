@@ -1,0 +1,15 @@
+<!-- app/views/top/_info_content.html.erb -->
+<turbo-frame id="info_area">
+  <div class="content" style="background-color: #f0f0f0; padding: 20px;">
+    <h2 class="title is-2">説明</h2>
+    <p class="is-size-5" style="margin-bottom: 1.5em;">このアプリは子どもの頃を思い出すために、昔のゲームや子供の時に欲しかったものをどんどん登録するアプリです！みなさんに登録していただけると嬉しいです。</p>
+    <p class="is-size-5" style="margin-bottom: 1.5em;">使い方は簡単です。検索バーでアイテムを検索し、見つかったものを登録します。何かを思い出したら、気軽に登録または購入してください。一覧から確認も可能です。</p>
+    
+    <% if @some_data.present? %>
+      <p class="is-info">データ: <%= @some_data %></p>
+    <% else %>
+      <p class="is-danger">表示するデータがありません。</p>
+    <% end %>
+  </div>
+</turbo-frame>
+

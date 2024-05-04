@@ -1,7 +1,20 @@
 <div class="notification is-primary">
-  <p>ボタン押せますか？？</p>
-  <%= button_to 'ボタン押してね', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'button is-light' %>
-  <%= button_to "全て削除", remove_buttons_path, method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
+  <p>登録アイテム一覧　（開くを押すといっぱい出ます　消して遊んで下さい）！！</p>
+  <div class="columns is-gapless no-gap">
+    <div class="column">
+      <%= button_to "説明", show_info_top_index_path, method: :get, data: { turbo_frame: "info_area" }, class: 'button is-warning' %>
+    </div>
+    <div class="column">
+      <%= button_to '開く', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'button is-info tight-button' %>
+    </div>
+    <div class="column">
+      <%= button_to "全て閉じる", remove_buttons_path, method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger tight-button' %>
+    </div>
+    <div class="column">
+    <%= button_to 'Xに投稿', post_top_index_path, method: :post, class: 'button is-success tight-button' %> <!-- 投稿ボタンを追加 -->
+    </div>
+  </div>
 </div>
 <%= turbo_frame_tag "buttons" do %>
-<% end %>
+<% end %> <!-- ボタンコントロール -->
+
