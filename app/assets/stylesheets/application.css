@@ -5,3 +5,7 @@
 .tight-button {
     padding: 0.5rem 0.75rem;
   }
+
+  body {
+    font-family: 'Monomaniac One', sans-serif;
+}

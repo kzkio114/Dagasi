@@ -2,10 +2,10 @@
   <div class="columns">
     <div class="column is-full">
       <div class="notification is-primary">
+      <%= turbo_frame_tag "info_area", class: "mb-3" do %>
+　　　 　<% end %> <!-- 情報エリア -->
         <div class="columns is-multiline">
-          <div class="column is-full">
-          <%= turbo_frame_tag "info_area" do %>
-　　　　　　<% end %>
+          <div class="column is-full mt-3">
             <%= link_to 'ランダム表示', items_random_search_path, class: 'button' %>
             <!-- ランダム検索ボタン -->
             <%= render 'top/button_controls' %> <!-- ボタンコントロール -->
