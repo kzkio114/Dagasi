@@ -14,12 +14,21 @@ Rails.application.routes.draw do
   post 'new_button', to: 'buttons#new', as: 'new_button'
   post 'items/create_or_find', to: 'items#create_or_find', as: 'create_or_find_item'
   get 'explanation', to: 'pages#explanation', as: 'explanation'
-  
+
+  get 'show_info', to: 'top#show_info', as: 'show_info_top_index'
+  delete 'clear_info', to: 'top#clear_info', as: 'clear_info_top_index'
+
   resources :buttons
   post 'post', to: 'top#post', as: 'post_top_index'
   resources :top do
     collection do
       get :show_info
+    end
+  end
+
+  resources :top do
+    collection do
+      delete :clear_info  # DELETE リクエストで説明をクリアするアクションへのルート
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
