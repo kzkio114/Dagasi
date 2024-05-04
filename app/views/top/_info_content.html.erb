@@ -1,0 +1,14 @@
+<!-- app/views/top/_info_content.html.erb -->
+<turbo-frame id="info_area">
+  <h2>情報エリア</h2>
+  <p>ここに表示したい情報の内容を記述します。これは動的な情報エリアで、ユーザーが「情報」ボタンをクリックするとここが更新されます。</p>
+  
+  <% if @some_data.present? %>
+    <p>データ: <%= @some_data %></p>
+  <% else %>
+    <p>表示するデータがありません。</p>
+  <% end %>
+
+  <!-- 他のHTMLコンテンツやRailsのヘルパーをここに挿入できます -->
+</div>
+</turbo-frame>

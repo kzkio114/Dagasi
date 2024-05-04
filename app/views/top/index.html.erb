@@ -4,6 +4,8 @@
       <div class="notification is-primary">
         <div class="columns is-multiline">
           <div class="column is-full">
+          <%= turbo_frame_tag "info_area" do %>
+　　　　　　<% end %>
             <%= link_to 'ランダム表示', items_random_search_path, class: 'button' %>
             <!-- ランダム検索ボタン -->
             <%= render 'top/button_controls' %> <!-- ボタンコントロール -->

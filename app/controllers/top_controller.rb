@@ -11,6 +11,19 @@ class TopController < ApplicationController
     @buttons = Button.all
   end
 
+  def show_info
+    @some_data = "この情報は動的にロードされました。"
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("info_area", partial: "top/info_content", locals: { some_data: @some_data }) }
+      format.html { render partial: "top/info_content", locals: { some_data: @some_data } }
+    end
+  end
+
+  def post
+    @item_count = Item.count
+    # その他の投稿処理
+  end
+
   def random_items
     ids = Item.pluck(:id)
     random_ids = ids.sample(5)

@@ -11,7 +11,16 @@ Rails.application.routes.draw do
   # ランダム検索ページへのルート
   get 'items/random_search', to: 'items#random_search'
   resources :items
+  post 'new_button', to: 'buttons#new', as: 'new_button'
+  post 'post', to: 'pages#post', as: 'post'
+  get 'explanation', to: 'pages#explanation', as: 'explanation'
+  resources :buttons
 
+  resources :top do
+    collection do
+      get :show_info
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
