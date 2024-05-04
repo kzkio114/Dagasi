@@ -4,12 +4,21 @@ class TopController < ApplicationController
     @search_form = SearchForm.new(keyword: params[:keyword])
     if @search_form.valid?
       @keyword = @search_form.keyword
-      @keyword += "　子ども" # 検索キーワードに "全てに 子ども" を追加
+      @keyword += "　子ども"
       @items = RakutenService.search_items(@keyword)
     end
     @random_items = random_items
     @buttons = Button.all
+    @last_item = Item.last # またはどのようにして最後のアイテムを取得するかに基づきます
+    @item_count = Item.count
+    
+    # Twitterの共有リンク用のテキストを作成
+    app_url = "nostalgic-e3f4cba5b01a.herokuapp.com"
+    app_name = "懐かしいものを思い出すアプリ"
+    last_item_name = @last_item.name.gsub("子ども", "") if @last_item.present? # 最後のアイテム名からも「子ども」を削除
+    @tweet_text = "#{app_name}\n最後に登録した懐かしいもの: #{last_item_name}\n懐かしいもの登録数: #{@item_count}\n#{app_url}\n#懐思いアプリ #ミニアプリweek"
   end
+
 
   def show
     # 必要な処理をここに記述
@@ -19,7 +28,10 @@ class TopController < ApplicationController
     @item_count = Item.count
     last_item_id = session[:cart].last
     @last_item = Item.find_by(id: last_item_id)
-    
+
+    # 最新のアイテムを取得して設定
+    @last_item = Item.order(created_at: :desc).first
+
     # 投稿処理（外部APIへの同期POSTリクエストなど）
     if @last_item
       # 投稿が成功した場合の処理
@@ -35,6 +47,16 @@ class TopController < ApplicationController
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.replace("info_area", partial: "top/info_content", locals: { some_data: @some_data }) }
       format.html { render partial: "top/info_content", locals: { some_data: @some_data } }
+    end
+  end
+
+  def clear_info
+    respond_to do |format|
+      format.turbo_stream do
+        # 説明の内容を完全にクリアする
+        render turbo_stream: turbo_stream.update("info_area", "")
+      end
+      format.html { redirect_to root_path }  # リダイレクトが必要な場合
     end
   end
 

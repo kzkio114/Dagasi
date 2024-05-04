@@ -1,6 +1,5 @@
 <%= turbo_frame_tag 'button_area' do %>
   <div id="<%= dom_id(button) %>" class="notification">
-    <%= button_to "閉じる", remove_specific_button_path(id: dom_id(button)), method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
     <% if @item_names.present? %>
       <p class="mt-3 is-size-5">アイテム　登録数: <%= Item.count %></p>
       <div class="columns is-multiline">
@@ -13,6 +12,12 @@
         <% end %>
       </div>
     <% end %>
-    <%= button_to "閉じる", remove_specific_button_path(id: dom_id(button)), method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
+  <div class="columns">
+    <div class="column">
+      <%= button_to "閉じる", remove_specific_button_path(id: dom_id(button)), method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
+    </div>
+    <div class="column is-narrow">
+      <%= button_to "閉じる", remove_specific_button_path(id: dom_id(button)), method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
+    </div>
   </div>
 <% end %>

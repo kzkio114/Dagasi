@@ -1,5 +1,4 @@
 <h2 style="text-transform: uppercase !important; font-weight: bold;">検索キーワード: <%= @keyword %></h2>
-<%= turbo_frame_tag 'items' do %>
+<% if @keyword.present? %>
   <%= button_to 'キーワードを保存する', create_or_find_item_path(name: @keyword), method: :post, class: 'button', data: { turbo_frame: "items" } %>
-  <%# 他のアイテム表示 %>
 <% end %>
