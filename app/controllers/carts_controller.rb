@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+
   def add
     session[:cart] ||= []
     session[:cart] << params[:keyword]

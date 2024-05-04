@@ -11,17 +11,31 @@ class TopController < ApplicationController
     @buttons = Button.all
   end
 
+  def show
+    # 必要な処理をここに記述
+  end
+
+  def post
+    @item_count = Item.count
+    last_item_id = session[:cart].last
+    @last_item = Item.find_by(id: last_item_id)
+    
+    # 投稿処理（外部APIへの同期POSTリクエストなど）
+    if @last_item
+      # 投稿が成功した場合の処理
+      redirect_to root_path, notice: 'アイテムをXに投稿しました。'
+    else
+      # エラー処理
+      redirect_to root_path, alert: '投稿するアイテムが見つかりません。'
+    end
+  end
+
   def show_info
     @some_data = "この情報は動的にロードされました。"
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.replace("info_area", partial: "top/info_content", locals: { some_data: @some_data }) }
       format.html { render partial: "top/info_content", locals: { some_data: @some_data } }
     end
-  end
-
-  def post
-    @item_count = Item.count
-    # その他の投稿処理
   end
 
   def random_items
