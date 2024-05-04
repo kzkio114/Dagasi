@@ -1,5 +1,5 @@
 <% app_url = "https://yourappdomain.com" %>
-<% app_name = "あなたのアプリ名" %>
+<% app_name = "懐かしいもの探すアプリ" %>
 <% last_item_name = @last_item.name if @last_item.present? %>
 <% tweet_text = "#{app_name}\n最後に登録したアイテム: #{last_item_name}\nアイテム登録数: #{@item_count}\n#{app_url}" %>
 <%= link_to "結果をTwitterで共有する", "https://twitter.com/intent/tweet?text=#{CGI.escape(tweet_text)}", target: "_blank", class: "button is-primary" %>

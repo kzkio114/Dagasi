@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get 'items/random_search', to: 'items#random_search'
   resources :items
   post 'new_button', to: 'buttons#new', as: 'new_button'
-  
+  post 'items/create_or_find', to: 'items#create_or_find', as: 'create_or_find_item'
   get 'explanation', to: 'pages#explanation', as: 'explanation'
+  
   resources :buttons
   post 'post', to: 'top#post', as: 'post_top_index'
   resources :top do
