@@ -27,7 +27,6 @@
                      else 'is-primary'
                      end %>
     <div class="notification <%= bulma_class %>">
-      <button class="delete"></button>
       <%= message %>
     </div>
   <% end %> <!-- フラッシュメッセージを表示 -->
@@ -36,14 +35,15 @@
   <!-- turboはload必要-->
   <script>
     document.addEventListener('turbo:load', () => {
-      (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+      document.querySelectorAll('.notification .delete').forEach(($delete) => {
         const $notification = $delete.parentNode;
-
-        $delete.addEventListener('click', () => {
-          $notification.parentNode.removeChild($notification);
+        if ($notification) { // $notificationがnullではないことを確認
+          $delete.addEventListener('click', () => {
+            $notification.parentNode.removeChild($notification);
         });
-      });
+      }
     });
+});
   </script>
 </body>
 </html>

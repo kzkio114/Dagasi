@@ -11,7 +11,7 @@ class TopController < ApplicationController
     @buttons = Button.all
     @last_item = Item.last # またはどのようにして最後のアイテムを取得するかに基づきます
     @item_count = Item.count
-    
+
     # Twitterの共有リンク用のテキストを作成
     app_url = "nostalgic-e3f4cba5b01a.herokuapp.com"
     app_name = "懐かしいものを思い出すアプリ"
@@ -31,6 +31,8 @@ class TopController < ApplicationController
 
     # 最新のアイテムを取得して設定
     @last_item = Item.order(created_at: :desc).first
+
+    Rails.logger.debug "データベースから取得した最新のアイテム: #{@last_item}"
 
     # 投稿処理（外部APIへの同期POSTリクエストなど）
     if @last_item
@@ -75,12 +77,12 @@ class TopController < ApplicationController
 
 
   def add_button
-    @button = Button.new
+    @button = Button.new(name: params[:button_name]) # ここでフォームからの名前を受け取る
     if @button.save
-      @item_names = Item.pluck(:name).map { |name| name.gsub("子ども", "") if name } # アイテム名を取得し、"子ども"を削除
+      @item_names = Item.pluck(:name)#.map { |name| name.gsub("子ども", "") if name } # アイテム名を取得し、"子ども"を削除
       respond_to do |format|
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append("buttons", partial: "top/button", locals: { button: @button })
+          render turbo_stream: turbo_stream.append("buttons", partial: "top/button", locals: { button: @button, item_names: @item_names })
         end
         format.html { redirect_to root_path }
       end
