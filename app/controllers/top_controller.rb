@@ -4,7 +4,7 @@ class TopController < ApplicationController
     @search_form = SearchForm.new(keyword: params[:keyword])
     if @search_form.valid?
       @keyword = @search_form.keyword
-      @keyword += "　子ども"
+      # @keyword += "　子ども"
       @items = RakutenService.search_items(@keyword)
     end
     @random_items = random_items
