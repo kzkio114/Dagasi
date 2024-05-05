@@ -2,15 +2,25 @@
   "name": "app",
   "private": true,
   "scripts": {
-    "build": "bun run esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "bun run sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
-  },
+    "build:js": "bun run esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build:sass": "bun run sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.intermediate.css --no-source-map --load-path=node_modules",
+    "build:postcss": "bun run postcss ./app/assets/builds/application.intermediate.css -o ./app/assets/builds/application.css",
+    "build:css": "bun run build:sass && bun run build:postcss",
+    "build": "bun run build:js && bun run build:css"
+  }
+  ,
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
-    "bulma": "^1.0.0",
+    "autoprefixer": "^10.4.19",
+    "bun": "latest",
+    "daisyui": "^4.10.5",
     "esbuild": "^0.20.2",
+    "postcss": "^8.4.38",
     "sass": "^1.75.0",
-    "bun": "latest"
+    "tailwindcss": "^3.4.3"
+  },
+  "devDependencies": {
+    "postcss-cli": "^11.0.0"
   }
 }

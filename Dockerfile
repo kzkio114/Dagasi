@@ -48,7 +48,8 @@ COPY package.json ./
 RUN bun install
 RUN bun add esbuild
 RUN bun add @hotwired/turbo-rails @hotwired/stimulus
-RUN bun add bulma
+RUN bun add tailwindcss autoprefixer
+RUN bun add daisyui # DaisyUIを追加
 
 # アプリケーションのコピー
 COPY . /myapp

@@ -1,19 +1,19 @@
-<div class="notification is-primary">
-  <div class="columns is-gapless no-gap">
-    <div class="column">
-      <%= button_to '開く', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'button is-info tight-button' %>
+<div class="bg-blue-500 p-4">
+  <div class="grid grid-cols-5 gap-2">
+    <div class="col">
+      <%= button_to '開く', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'btn btn-info' %>
     </div>
-    <div class="column">
-      <%= button_to "閉じる", remove_buttons_path, method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger tight-button' %>
+    <div class="col">
+      <%= button_to "閉じる", remove_buttons_path, method: :delete, data: { turbo_frame: "buttons" }, class: 'btn btn-error' %>
     </div>
-    <div class="column">
-      <%= link_to "Xに投稿", "https://twitter.com/intent/tweet?text=#{CGI.escape(@tweet_text)}", target: "_blank", class: "button is-success", role: "button" %>
+    <div class="col">
+      <%= link_to "Xに投稿", "https://twitter.com/intent/tweet?text=#{CGI.escape(@tweet_text)}", target: "_blank", class: "btn btn-success", role: "button" %>
     </div>
-    <div class="column">
-      <%= button_to "出す", show_info_top_index_path, method: :get, data: { turbo_frame: "info_area" }, class: 'button is-warning' %>
+    <div class="col">
+      <%= button_to "出す", show_info_top_index_path, method: :get, data: { turbo_frame: "info_area" }, class: 'btn btn-warning' %>
     </div>
-    <div class="column">
-      <%= button_to "隠す", clear_info_top_index_path, method: :delete, data: { turbo_frame: "info_area" }, class: 'button is-danger' %>
+    <div class="col">
+      <%= button_to "隠す", clear_info_top_index_path, method: :delete, data: { turbo_frame: "info_area" }, class: 'btn btn-error' %>
     </div>
   </div>
 </div>
