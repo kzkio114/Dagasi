@@ -79,7 +79,7 @@ class TopController < ApplicationController
   def add_button
     @button = Button.new(name: params[:button_name]) # ここでフォームからの名前を受け取る
     if @button.save
-      @item_names = Item.pluck(:name)#.map { |name| name.gsub("子ども", "") if name } # アイテム名を取得し、"子ども"を削除
+      @item_names = Item.pluck(:name).map { |name| name.gsub("子ども", "") if name } # アイテム名を取得し、"子ども"を削除
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.append("buttons", partial: "top/button", locals: { button: @button, item_names: @item_names })
