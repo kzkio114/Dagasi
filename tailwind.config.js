@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'monomaniac': ['"Monomaniac One"', 'monospace'] ,
+        'kosugi-maru': ['Kosugi Maru', 'sans-serif'], // monospaceをフォールバックフォントとして追加
+      },
       colors: {
         'nostalgic-turquoise': '#00a497',
         'nostalgic-green': '#669977',// 懐かしい感じの緑色 colorsも追記

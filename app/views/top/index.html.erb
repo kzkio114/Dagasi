@@ -1,16 +1,20 @@
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 font-kosugi-maru text-2xl">
   <div class="grid grid-cols-1">
     <div class="col-span-1">
       <div class="bg-nostalgic-turquoise bg-opacity-75 text-white p-5 rounded-lg shadow-lg">
-        <p class="text-2xl font-bold">「懐かしいものを思い出すアプリ」へようこそ！</p>
+        <p class="text-4xl font-bold mb-6">「懐かしいものを思い出すアプリ」へようこそ！</p>
         <div class="col-span-1">
           <div class="mb-3">
             <%= render 'top/info_content' %> <!-- 説明セクション -->
           </div>
+          <div class="mb-3">
           <%= render 'top/button_info' %> <!-- ボタンコントロール -->
+          </div>
+          <div class="mb-3">
           <%= render 'top/button_controls' %> <!-- ランダム検索ボタン -->
+          </div>
         </div>
-        <div class="col-span-1 md:col-span-1/2">
+        <div class="col-span-1">
           <%= render 'top/from_rakuten' %> <!-- 検索フォーム -->
         </div>
         <div class="col-span-1">

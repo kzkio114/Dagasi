@@ -1,13 +1,13 @@
 <%= form_with url: root_path, method: :get, local: true do |form| %>
-  <div class="mb-4">
-    <%= form.label :keyword, "キーワードで検索", class: "block text-sm font-medium text-gray-700" %>
+  <div class="mb-6"> <!-- 下マージンを増やしてキーワード検索とボタンの間隔を開ける -->
+    <%= form.label :keyword, "キーワードで検索", class: "block text-2xl font-medium text-white mb-1" %> <!-- テキストを大きくするために text-2xl を追加 --> <!-- テキストを大きくするために text-lg を追加 -->
     <div class="mt-1 mb-3"> <!-- 下マージンを追加してボタンとの間隔を開ける -->
-      <%= form.text_field :keyword, class: "input input-bordered w-full bg-gray-200", placeholder: "キーワードを入力" %>
+      <%= form.text_field :keyword, class: "input input-bordered w-full bg-gray-200 text-black text-xl", placeholder: "キーワードを入力" %>
     </div>
   </div>
   <div class="flex items-center space-x-3 mb-4"> <!-- ボタン間のスペースと下マージンを追加 -->
-    <%= form.submit "検索", class: "btn bg-purple-700 hover:bg-purple-500 text-white font-bold py-1 px-3 rounded-full transition duration-200 ease-in-out" %>
-    <%= link_to 'ランダム表示', items_random_search_path, class: 'btn bg-red-700 hover:bg-red-500 text-white font-bold py-1 px-3 rounded-full transition duration-200 ease-in-out' %>
+    <%= form.submit "検索", class: "btn bg-purple-700 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-full transition duration-200 ease-in-out text-xl" %> <!-- ボタンを大きくするために text-xl を追加 -->
+    <%= link_to 'ランダム表示', items_random_search_path, class: 'btn bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full transition duration-200 ease-in-out text-xl' %> <!-- ボタンを大きくするために text-xl を追加 -->
 　</div>
 <% end %>
 
