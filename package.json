@@ -7,8 +7,7 @@
     "build:postcss": "bun run postcss ./app/assets/builds/application.intermediate.css -o ./app/assets/builds/application.css",
     "build:css": "bun run build:sass && bun run build:postcss",
     "build": "bun run build:js && bun run build:css"
-  }
-  ,
+  },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
@@ -21,6 +20,7 @@
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
+    "cssnano": "^7.0.1",
     "postcss-cli": "^11.0.0"
   }
 }
