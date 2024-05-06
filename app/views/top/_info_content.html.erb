@@ -5,9 +5,9 @@
       <p class="mb-6 text-2xl text-gray-900">このアプリは子どもの頃を思い出すために、昔のゲームや子供の時に欲しかったものをどんどん登録するアプリです！みなさんに登録していただけると嬉しいです。</p> <!-- text-2xl クラスを追加してテキストのサイズを大きくします -->
       <p class="mb-6 text-2xl text-gray-900">使い方は簡単です。検索バーでアイテムを検索し、見つかったものを登録します。何かを思い出したら、気軽に登録または下のリンクから購入してください。一覧から確認も可能です。</p> <!-- text-2xl クラスを追加してテキストのサイズを大きくします -->
       <% if @some_data.present? %>
-        <p class="font-mono text-3xl text-blue-800">データ: <%= @some_data %></p> <!-- text-3xl クラスを追加してテキストのサイズを大きくします -->
+        <p class="font-mono text-3xl text-blue-800"><%= @some_data %></p> <!-- text-3xl クラスを追加してテキストのサイズを大きくします -->
       <% else %>
-        <p class="font-mono text-3xl text-red-600">表示するデータがありません。</p> <!-- text-3xl クラスを追加してテキストのサイズを大きくします -->
+        <p class="font-mono text-3xl text-red-600"></p> <!-- text-3xl クラスを追加してテキストのサイズを大きくします -->
       <% end %>
     </div>
   </div>

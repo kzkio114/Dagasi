@@ -45,7 +45,7 @@ class TopController < ApplicationController
   end
 
   def show_info
-    @some_data = "この情報は動的にロードされました。"
+    @some_data = "アプリ触ってくれてありがとうございます！！嬉しいです！！😭"
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.replace("info_area", partial: "top/info_content", locals: { some_data: @some_data }) }
       format.html { render partial: "top/info_content", locals: { some_data: @some_data } }
