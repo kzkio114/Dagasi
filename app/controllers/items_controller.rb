@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     @item = Item.find_or_create_by(name: params[:name])
     if @item.persisted?
       # アイテムが保存されたら、前のページにリダイレクトする
-      redirect_back(fallback_location: root_path, notice: "懐かしいものを保存しました。")
+      redirect_back(fallback_location: root_path, notice: "懐かしいものを保存しました。保存ありがとうございます！！")
     else
       # 保存が失敗した場合、エラーメッセージと共に新規作成ページに戻る
       render :new, status: :unprocessable_entity

@@ -3,9 +3,9 @@
     <% @items.each do |item| %>
       <div class="p-2 w-1/5">
         <div class="box border p-4 rounded-lg shadow-lg">
-          <p class="text-lg font-semibold">¥<%= number_with_delimiter(item[:price]) %></p>
-          <a href="<%= item[:url] %>" target="_blank" class="text-blue-500 hover:text-blue-600 transition duration-300">楽天市場へGO!!</a>
-          <img src="<%= item[:image_url] %>" alt="<%= item[:name] %>" class="w-24 h-auto mt-2">
+          <p class="text-sm font-semibold">¥<%= number_with_delimiter(item[:price]) %></p> <!-- テキストサイズを小さくする -->
+          <a href="<%= item[:url] %>" target="_blank" class="text-blue-500 hover:text-blue-600 transition duration-300 text-sm">楽天市場へ!!</a> <!-- リンクのテキストサイズも小さくする -->
+          <img src="<%= item[:image_url] %>" alt="<%= item[:name] %>" class="w-24 h-24 object-cover mt-2"> <!-- 画像サイズを制御し、object-coverを使用 -->
         </div>
       </div>
     <% end %>
