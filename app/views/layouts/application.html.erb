@@ -3,6 +3,7 @@
 <head>
   <title>懐かしいものを思い出すアプリ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap" rel="stylesheet">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -17,33 +18,36 @@
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 </head>
-<body>
-  <% flash.each do |type, message| %>
-    <% bulma_class = case type.to_sym
-                     when :notice then 'is-primary'
-                     when :alert then 'is-danger'
-                     when :info then 'is-info'
-                     when :warning then 'is-warning'
-                     else 'is-primary'
-                     end %>
-    <div class="notification <%= bulma_class %>">
-      <button class="delete"></button>
-      <%= message %>
-    </div>
-  <% end %> <!-- フラッシュメッセージを表示 -->
+<body class="font-kosugi-maru text-2xl">
+  <div class="container mx-auto px-4">
+    <% flash.each do |type, message| %>
+      <% tailwind_class = case type.to_sym
+                           when :notice then 'bg-blue-500 text-white'
+                           when :alert then 'bg-red-500 text-white'
+                           when :info then 'bg-blue-400 text-white'
+                           when :warning then 'bg-yellow-500 text-white'
+                           else 'bg-blue-500 text-white'
+                         end %>
+      <div class="<%= tailwind_class %> px-4 py-2 rounded-lg"> <!-- 丸みを加えたクラス rounded-lg -->
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+</body><!-- フラッシュメッセージを表示 -->
 
   <%= yield %>
   <!-- turboはload必要-->
   <script>
     document.addEventListener('turbo:load', () => {
-      (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+      document.querySelectorAll('.notification .delete').forEach(($delete) => {
         const $notification = $delete.parentNode;
-
-        $delete.addEventListener('click', () => {
-          $notification.parentNode.removeChild($notification);
+        if ($notification) { // $notificationがnullではないことを確認
+          $delete.addEventListener('click', () => {
+            $notification.parentNode.removeChild($notification);
         });
-      });
+      }
     });
+});
   </script>
 </body>
 </html>

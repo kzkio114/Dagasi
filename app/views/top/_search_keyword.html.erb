@@ -1,4 +1,4 @@
-<h2 style="text-transform: uppercase !important; font-weight: bold;">検索キーワード: <%= @keyword %></h2>
+<h2 class="uppercase font-bold text-white">検索キーワード: <%= @keyword %></h2>
 <% if @keyword.present? %>
-  <%= button_to 'キーワードを保存する', create_or_find_item_path(name: @keyword), method: :post, class: 'button', data: { turbo_frame: "items" } %>
+  <%= button_to 'キーワードを保存する', create_or_find_item_path(name: @keyword), method: :post, class: 'btn', data: { turbo_frame: "items" } %>
 <% end %>

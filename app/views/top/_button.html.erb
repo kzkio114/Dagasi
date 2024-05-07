@@ -1,23 +1,27 @@
 <%= turbo_frame_tag 'button_area' do %>
-  <div id="<%= dom_id(button) %>" class="notification">
+  <div id="<%= dom_id(button) %>" class="bg-cream p-4 rounded-lg shadow">
     <% if @item_names.present? %>
-      <p class="mt-3 is-size-5">アイテム　登録数: <%= Item.count %></p>
-      <div class="columns is-multiline">
+      <p class="mt-3 text-xl text-soft-black">思い出のもの 登録数: <%= Item.count %></p>
+      <div class="flex flex-wrap">
         <% @item_names.each_slice((@item_names.size/3.0).ceil) do |names| %>
-          <div class="column">
+          <div class="w-1/3 p-2">
             <% names.each do |name| %>
-              <p class="is-size-8"><%= name %></p>
+              <p class="text-lg text-soft-black"><%= name %></p>
             <% end %>
           </div>
         <% end %>
       </div>
+    <% else %>
+      <p class="text-xl text-gray-800">登録されたアイテムがありません。</p>
     <% end %>
-  <div class="columns">
-    <div class="column">
-      <%= button_to "閉じる", remove_specific_button_path(id: dom_id(button)), method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
-    </div>
-    <div class="column is-narrow">
-      <%= button_to "閉じる", remove_specific_button_path(id: dom_id(button)), method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger' %>
+    <div class="flex mt-4 space-x-3">
+      <div class="flex-1 mx-auto">
+        <%= button_to "閉じる", remove_specific_button_path(id: dom_id(button)), method: :delete, data: { turbo_frame: "buttons" }, class: 'btn bg-vintage-red hover:bg-dark-vintage-red text-cream font-bold py-1 px-3 rounded-full transition duration-200 ease-in-out' %>
+      </div>
+      <div class="flex-none">
+        <%= button_to "閉じる", remove_specific_button_path(id: dom_id(button)), method: :delete, data: { turbo_frame: "buttons" }, class: 'btn bg-vintage-red hover:bg-dark-vintage-red text-cream font-bold py-1 px-3 rounded-full transition duration-200 ease-in-out' %>
+      </div>
     </div>
   </div>
 <% end %>
+

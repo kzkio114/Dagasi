@@ -1,13 +1,16 @@
 <turbo-frame id="info_area">
-  <div class="content" style="background-color: #f0f0f0; padding: 20px;">
-    <h2 class="title is-2">説明</h2>
-    <p class="is-size-5" style="margin-bottom: 1.5em;">このアプリは子どもの頃を思い出すために、昔のゲームや子供の時に欲しかったものをどんどん登録するアプリです！みなさんに登録していただけると嬉しいです。</p>
-    <p class="is-size-5" style="margin-bottom: 1.5em;">使い方は簡単です。検索バーでアイテムを検索し、見つかったものを登録します。何かを思い出したら、気軽に登録または下のリンクから購入してください。一覧から確認も可能です。</p>
-    <% if @some_data.present? %>
-      <p class="is-info">データ: <%= @some_data %></p>
-    <% else %>
-      <p class="is-danger">表示するデータがありません。</p>
-    <% end %>
+  <div class="container mx-auto　mb-6">
+    <div class="content bg-cream text-gray-900 p-8 rounded-lg shadow-lg">
+      <h2 class="text-5xl font-bold tracking-wider text-soft-black mb-6">説明</h2> <!-- text-5xl クラスを追加してタイトルのテキストのサイズを大きくします -->
+      <p class="mb-6 text-2xl text-gray-900">このアプリは子どもの頃を思い出すために、昔のゲームや子供の時に欲しかったものをどんどん登録するアプリです！みなさんに登録していただけると嬉しいです。</p> <!-- text-2xl クラスを追加してテキストのサイズを大きくします -->
+      <p class="mb-6 text-2xl text-gray-900">使い方は簡単です。検索バーでアイテムを検索し、見つかったものを登録します。何かを思い出したら、気軽に登録または下のリンクから購入してください。一覧から確認も可能です。</p> <!-- text-2xl クラスを追加してテキストのサイズを大きくします -->
+      <% if @some_data.present? %>
+        <p class="font-mono text-3xl text-blue-800"><%= @some_data %></p> <!-- text-3xl クラスを追加してテキストのサイズを大きくします -->
+      <% else %>
+        <p class="font-mono text-3xl text-red-600"></p> <!-- text-3xl クラスを追加してテキストのサイズを大きくします -->
+      <% end %>
+    </div>
   </div>
 </turbo-frame>
+
 

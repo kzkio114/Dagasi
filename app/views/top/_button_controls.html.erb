@@ -1,21 +1,22 @@
-<div class="notification is-primary">
-  <div class="columns is-gapless no-gap">
-    <div class="column">
-      <%= button_to '開く', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'button is-info tight-button' %>
+  <div class="grid grid-cols-5 gap-2">
+    <div class="col">
+      <%= button_to '開く', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded-full transition duration-200 ease-in-out' %>
     </div>
-    <div class="column">
-      <%= button_to "閉じる", remove_buttons_path, method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger tight-button' %>
+    <div class="col">
+      <%= button_to "閉じる", remove_buttons_path, method: :delete, data: { turbo_frame: "buttons" }, class: 'btn bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-full transition duration-200 ease-in-out' %>
     </div>
-    <div class="column">
-      <%= link_to "Xに投稿", "https://twitter.com/intent/tweet?text=#{CGI.escape(@tweet_text)}", target: "_blank", class: "button is-success", role: "button" %>
+    <div class="col">
+      <%= link_to "Xに投稿", "https://twitter.com/intent/tweet?text=#{CGI.escape(@tweet_text)}", target: "_blank", rel: "noopener noreferrer", class: "btn bg-black hover:bg-gray-700 text-white font-bold py-1 px-3 rounded-full transition duration-200 ease-in-out", role: "button" %>
     </div>
-    <div class="column">
-      <%= button_to "出す", show_info_top_index_path, method: :get, data: { turbo_frame: "info_area" }, class: 'button is-warning' %>
+    <div class="col">
+      <%= button_to "出す", show_info_top_index_path, method: :get, data: { turbo_frame: "info_area" }, class: 'btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-3 rounded-full transition duration-200 ease-in-out' %>
     </div>
-    <div class="column">
-      <%= button_to "隠す", clear_info_top_index_path, method: :delete, data: { turbo_frame: "info_area" }, class: 'button is-danger' %>
+    <div class="col">
+      <%= button_to "隠す", clear_info_top_index_path, method: :delete, data: { turbo_frame: "info_area" }, class: 'btn bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded-full transition duration-200 ease-in-out' %>
     </div>
   </div>
+
+<div class="mt-5"> <!-- ここで下マージンを追加 -->
+  <%= turbo_frame_tag "buttons" do %>
+  <% end %> <!-- ボタンコントロール -->
 </div>
-<%= turbo_frame_tag "buttons" do %>
-<% end %> <!-- ボタンコントロール -->

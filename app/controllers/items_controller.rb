@@ -1,13 +1,27 @@
 class ItemsController < ApplicationController
 
+  # def create_or_find
+  #   @item = Item.find_or_create_by(name: params[:name])
+  #   if @item.persisted?
+  #     respond_to do |format|
+  #       format.html { redirect_back(fallback_location: root_path, notice: "Item successfully saved.") }
+  #       format.turbo_stream do
+  #         # Turbo Streamを使用して、ページの特定の部分のみを更新する場合
+  #         render turbo_stream: turbo_stream.replace('items', partial: 'items/item', locals: { item: @item })
+  #       end
+  #     end
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
+
   def create_or_find
     @item = Item.find_or_create_by(name: params[:name])
     if @item.persisted?
-      respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.append('items', partial: 'items/item', locals: { item: @item }) }
-        format.html { redirect_to items_path }
-      end
+      # アイテムが保存されたら、前のページにリダイレクトする
+      redirect_back(fallback_location: root_path, notice: "懐かしいものを保存しました。保存ありがとうございます！！")
     else
+      # 保存が失敗した場合、エラーメッセージと共に新規作成ページに戻る
       render :new, status: :unprocessable_entity
     end
   end
