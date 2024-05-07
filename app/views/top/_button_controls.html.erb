@@ -1,19 +1,19 @@
-<div class="notification is-primary">
-  <div class="columns is-gapless no-gap">
-    <div class="column">
-      <%= button_to '開く', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'button is-info tight-button' %>
+<div class="bg-blue-500 p-4 rounded-lg">
+  <div class="flex gap-2">
+    <div class="flex-1">
+      <%= button_to '開く', add_button_path, method: :post, data: { turbo_frame: "buttons" }, class: 'bg-blue-400 text-white py-2 px-4 rounded hover:bg-blue-500' %>
     </div>
-    <div class="column">
-      <%= button_to "閉じる", remove_buttons_path, method: :delete, data: { turbo_frame: "buttons" }, class: 'button is-danger tight-button' %>
+    <div class="flex-1">
+      <%= button_to "閉じる", remove_buttons_path, method: :delete, data: { turbo_frame: "buttons" }, class: 'bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600' %>
     </div>
-    <div class="column">
-      <%= link_to "Xに投稿", "https://twitter.com/intent/tweet?text=#{CGI.escape(@tweet_text)}", target: "_blank", class: "button is-success", role: "button" %>
+    <div class="flex-1">
+      <%= link_to "Xに投稿", "https://twitter.com/intent/tweet?text=#{CGI.escape(@tweet_text)}", target: "_blank", class: "bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600", role: "button" %>
     </div>
-    <div class="column">
-      <%= button_to "出す", show_info_top_index_path, method: :get, data: { turbo_frame: "info_area" }, class: 'button is-warning' %>
+    <div class="flex-1">
+      <%= button_to "出す", show_info_top_index_path, method: :get, data: { turbo_frame: "info_area" }, class: 'bg-yellow-400 text-white py-2 px-4 rounded hover:bg-yellow-500' %>
     </div>
-    <div class="column">
-      <%= button_to "隠す", clear_info_top_index_path, method: :delete, data: { turbo_frame: "info_area" }, class: 'button is-danger' %>
+    <div class="flex-1">
+      <%= button_to "隠す", clear_info_top_index_path, method: :delete, data: { turbo_frame: "info_area" }, class: 'bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600' %>
     </div>
   </div>
 </div>

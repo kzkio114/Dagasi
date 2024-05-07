@@ -1,22 +1,22 @@
-<div class="container">
-  <div class="columns">
-    <div class="column is-full">
-      <div class="notification is-primary">
-      　　<p class="title is-2">「懐かしいものを思い出すアプリ」へようこそ！</p>
-        <div class="column is-full">
-        　<div class="mb-3">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="flex flex-wrap">
+    <div class="w-full">
+      <div class="bg-blue-500 text-white p-5 rounded-lg">
+        <p class="text-2xl font-bold">「懐かしいものを思い出すアプリ」へようこそ！</p>
+        <div class="w-full mt-3">
           <%= render 'top/info_content' %> <!-- 説明セクション -->
-          </div>
-          <%= render 'top/button_info' %><!-- ボタンコントロール -->
+        </div>
+        <div class="w-full">
+          <%= render 'top/button_info' %> <!-- ボタンコントロール -->
           <%= render 'top/button_controls' %> <!-- ランダム検索ボタン -->
         </div>
-        <div class="column is-half">
+        <div class="w-1/2">
           <%= render 'top/from_rakuten' %> <!-- 検索フォーム -->
         </div>
-        <div class="column is-full">
+        <div class="w-full">
           <%= render 'search_keyword' %> <!-- 検索キーワード表示 -->
         </div>
-        <div class="column is-full"> <!-- 商品一覧を表示 -->
+        <div class="w-full"> <!-- 商品一覧を表示 -->
           <% if @items.present? %>
             <%= render 'top/items', items: @items %>
           <% elsif @random_items.present? %>
