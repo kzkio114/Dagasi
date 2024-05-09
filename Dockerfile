@@ -47,12 +47,10 @@ ENV PATH /root/.bun/bin:$PATH
 COPY package.json ./
 RUN bun install
 RUN bun add esbuild
-RUN bun add @hotwired/turbo-rails @hotwired/stimulus
-RUN bun add tailwindcss autoprefixer
-RUN bun add daisyui # DaisyUIを追加
+RUN bun add esbuild @hotwired/turbo-rails @hotwired/stimulus tailwindcss autoprefixer daisyui
 
 # アプリケーションのコピー
-COPY . /myapp
+COPY . /app
 
 # ポート3000を公開
 EXPOSE 3000

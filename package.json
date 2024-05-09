@@ -6,7 +6,8 @@
     "build:sass": "bun run sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.intermediate.css --no-source-map --load-path=node_modules",
     "build:postcss": "bun run postcss ./app/assets/builds/application.intermediate.css -o ./app/assets/builds/application.css",
     "build:css": "bun run build:sass && bun run build:postcss",
-    "build": "bun run build:js && bun run build:css"
+    "build": "bun run build:js && bun run build:css",
+    "watch": "node ./app/esbuild.config.js --watch"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
@@ -15,6 +16,8 @@
     "bun": "latest",
     "daisyui": "^4.10.5",
     "esbuild": "^0.20.2",
+    "esbuild-plugin-sass": "^1.0.1",
+    "install": "^0.13.0",
     "postcss": "^8.4.38",
     "sass": "^1.75.0",
     "tailwindcss": "^3.4.3"

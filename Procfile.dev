@@ -1,2 +1,4 @@
+esbuild: node ./app/esbuild.config.js --watch
 js: bun run build --watch
 css: bun run build:css --watch
+postcss: bun run build:postcss --watch

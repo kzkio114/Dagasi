@@ -15,6 +15,7 @@
   <meta name="twitter:image" content="<%= asset_url('omoide.webp') %>"> <!-- 画像のURLを適切に設定してください -->
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag 'builds/bundle' %> <!-- この行を追加 -->
   <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 </head>
 <body>
