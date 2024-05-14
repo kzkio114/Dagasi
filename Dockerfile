@@ -52,7 +52,7 @@ RUN bun add tailwindcss autoprefixer
 RUN bun add daisyui # DaisyUIを追加
 
 # アプリケーションのコピー
-COPY . /myapp
+COPY . /app
 
 # ポート3000を公開
 EXPOSE 3000
