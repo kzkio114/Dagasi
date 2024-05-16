@@ -58,7 +58,7 @@ class TopController < ApplicationController
         # 説明の内容を完全にクリアする
         render turbo_stream: turbo_stream.update("info_area", "")
       end
-      format.html { redirect_to root_path }  # リダイレクトが必要な場合
+      format.html { redirect_to root_path }  
     end
   end
 
