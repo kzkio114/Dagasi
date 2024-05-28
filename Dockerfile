@@ -60,5 +60,6 @@ EXPOSE 3000
 # ビルドスクリプトの実行権限を付与
 RUN chmod +x bin/render-build.sh
 
+
 # Railsサーバーを起動
 CMD ["rails", "server", "-b", "0.0.0.0"]
