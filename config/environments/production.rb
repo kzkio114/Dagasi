@@ -88,7 +88,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-  Rails.application.config.hosts << "dagasi.onrender.com"
+ 
 
 
   # Enable DNS rebinding protection and other `Host` header attacks.
