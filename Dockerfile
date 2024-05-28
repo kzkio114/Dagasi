@@ -61,5 +61,5 @@ EXPOSE 3000
 RUN chmod +x bin/render-build.sh
 
 
-# Railsサーバーを起動
-CMD ["rails", "server", "-b", "0.0.0.0"]
+# 環境変数PORTを参照してRailsサーバーを起動
+CMD ["sh", "-c", "rails server -b 0.0.0.0 -p $PORT"]
